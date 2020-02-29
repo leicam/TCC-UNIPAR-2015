@@ -1,0 +1,11 @@
+CONNECT 'D:\TCC 2015\BANCO\BANCO.FDB' USER 'SYSDBA' PASSWORD 'masterkey';
+CONNECT 'C:\BANCO VIDRACARIA\BANCO.FDB' USER 'SYSDBA' PASSWORD 'masterkey';
+
+
+COMMIT;
+SHOW TABLES;
+
+Depois de muita procura no Google, achei uma solução definitiva para esse problema.
+Basta copiar a DLL "fbclient.dll"(normalmente esta em "C:\Arquivos de programas\Firebird\Firebird_2_5\bin") para a pasta "system32".
+Depois ir no "Executar"(Windows+R) e digitar o comando "regsvr32 fbclient.dll", para registrar a DLL.
+Pronto, agora a conexão deve ser realizada sem probelmas.

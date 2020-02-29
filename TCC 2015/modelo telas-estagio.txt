@@ -1,0 +1,157 @@
+TUTORIAL BANCO FIREBIRD http://cavalcanti.pro.br/textos/bd/ibexpert00.pdf
+http://www.activedelphi.com.br/
+http://www.devmedia.com.br/11-utilizando-interbase-firebird-com-ibexpress/4834
+http://underpop.online.fr/b/banco-de-dados/dbexpress.pdf
+
+
+connect "D:\TCC 2015\BANCO.FDB" user sysdba password masterkey
+
+ABERTURA DE CAixa
+EMPRESA        ;;;;;;;;;;;;  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+OPERADOR       ;;;;;;;;;;;;  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+DATA  ABERTURA ;;;;;;;;;;;;
+VALOR ABERTURA ;;;;;;;;;;;;
+
+--------------------------------------------------------------------------------------------
+
+FECHAMENTO DE CAIXA
+|CÓDIGO | DT. ABERTURA | OPERADR | NOME		| DT FECHAMENTO | CONFERENTE | FECHADO     |
+ ;;;;;;;  ;;;;;;;;;;;;;  ;;;;;;;;  ;;;;;;;;;;;;;  ;;;;;;;;;;;;;;  ;;;;;;;;;;;  SIM OU NÃO
+
+                                                             |BT. INICIAR CONTAGEM|     
+
+CONTAGEM
+HISTÓRICO       | VL. SALDO | 
+DINHEIRO        | ;;;;;;;;;;| 
+CHEQUE          | ;;;;;;;;;;| 
+CARTÃO CRÉDITO  | ;;;;;;;;;;| 
+CARTÃO DÉBITO   | ;;;;;;;;;;| 
+FATURA          | ;;;;;;;;;;|
+
+VALOR CONTADO ;;;;;;;; VALOR RETIRADA  ;;;;;;;;
+VALOR SISTEMA ;;;;;;;; VALOR DIFERENÇA ;;;;;;;;
+
+					   |BT. FECHAR CONTAGEM| |BT. FECHAR CAIXA|
+--------------------------------------------------------------------------------------------
+
+LANÇAMENTO DE DESPESA NO CAIXA
+OPERADOR     ;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;
+FORNECEDOR   ;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;
+DUPLICATA    ;;;;;;;;;;
+VALOR        ;;;;;;;;;;
+DATA EMISSÃO ;;;;;;;;;;
+DATA VENCTO. ;;;;;;;;;;
+OBSERVAÇÃO   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--------------------------------------------------------------------------------------------
+
+RETIRADA DE CAIXA
+OPERADOR      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CAIXA         ;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+DATA RETIRADA ;;;;;;;;;;
+MOTIVO        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+TIPO             |        VALOR
+DINHEIRO		  ;;;;;;;;;;;
+CHEQUE			  ;;;;;;;;;;;
+			                BT CONFIRMA | BT CANCELA
+--------------------------------------------------------------------------------------------
+
+CADASTRO DE PRODUTO
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|
+CÓDIGO    ;;;;;; 	        DATA CADASTRO ;;;;;;;;;
+CÓDIGO DE BARRAS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+DESCRIÇÃO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+MARCA     DROPDOWN LIST
+CATEGORIA DROPDOWN LIST
+PREÇO CUSTO ;;;;;;;;;;; PREÇO VENDA ;;;;;;;;;;;
+ESTOQUE     ;;;;;;;;;;;
+--------------------------------------------------------------------------------------------
+
+CADASTRO DE CLIENTE
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|
+CÓDIGO ;;;;;;;;;;	 DATA CADASTRO ;;;;;;;;;     CREDEV ;;;;;;;;;
+CPF/CNPJ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; "TIPO PESSOA"->LABEL
+NOME   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; STATUS ;;;;;;;
+DATA NASCIMENTO ;;;;;;;;;;;; SEXO DROPDOWNLIST ESTADO CIVIL ;;;;;;;;;
+E-MAIL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TELEFONE ;;;;;;;;;;;;;
+CEP    ;;;;;;;; CIDADE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; UF ;;
+ENDEREÇO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; BAIRRO ;;;;;;;;;;;;;;;
+COMPLEMENTO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; REFERENCIA ;;;;;;;;;;;
+OBSERVAÇÃO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+-------------------------------------------------------------------------------------------
+
+PEDIDO DE COMPRA 
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|		
+CÓDIGO PEDIDO ;;;;;;;;;;;    DATA PEDIDO ;;;;;;;;;	      STATUS PEDIDO ;;;;;;;;;;;;;;; 
+CÓDIGO FORNECEDOR ;;;;;;; NOME ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CONDIÇÃO DE PAGAMENTO ;;;;;;;;|BT.CNSL| DESCRIÇÃO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ITEM DO PEDIDO->FRAME
+CÓDIGO PRODUTO ;;;;;;|BT.CNSL|DESCRIÇÃO ;;;;;;;;;;;;;;;;;;;;;; QTDE. ;;;;;;; PREÇO UN. ;;;;
+DESCONTO ITEM  ;;;;;;
+CÓDIGO	| DESCRIÇÃO				| QTDE.	| PREÇO UN. | VALOR TOTAL         |
+;;;;;;;;| ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;| ;;;;;;| ;;;;;;;;;;| ;;;;;;;;;;;;;;;;;;;;|
+
+TOTAIS->FRAME
+ITENS ;;;;;;;; VALOR TOTAL DOS PRODUTOS ;;;;;;;;;;; DESCONTO ;;;;;;;;; VALOR PEDIDO ;;;;;;;
+-------------------------------------------------------------------------------------------
+
+ACERTO DE CONDICIONAL
+CÓDIGO CLIENTE ;;;;;;;; NOME ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; DATA ACERTO ;;;;;;;;;;;
+CÓDIGO 	| DESCRIÇÃO					| QUANTIDADE | FATURAR | DEVOLVER |
+;;;;;;;;| ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;| ;;;;;;;;;;;| ;;;;;;;;| ;;;;;;;;;|
+
+								|BT. PROCESSAR CONDICIONAL|
+-------------------------------------------------------------------------------------------
+
+CADASTRO DE FORNECEDOR
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|
+CÓDIGO   ;;;;;;;;;; 	      DATA CADASTRO ;;;;;;;;;
+INSCRIÇÃO ESTADUAL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CPF/CNPJ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; STATUS ;;;;;;;
+NOME     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ENDEREÇO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CIDADE   ;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; UF ;;
+CEP      ;;;;;;;;;;;;            TELEFONE ;;;;;;;;;;;
+-------------------------------------------------------------------------------------------
+
+CONDIÇÃO PAGAMENTO
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|
+CÓDIGO ;;;;;;;;;; NR PARCELAS ;;;; DESCRIÇÃO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+-------------------------------------------------------------------------------------------
+
+RECEBIMENTO DE VENDA 
+VALOR TOTAL VENDA ;;;;;;;;;;;;;;;;;;
+VALOR TROCO VENDA ;;;;;;;;;;;;;;;;;;
+
+CÓDIGO | VALOR      | TIPO               | DATA VENCIMENTO    | OBSERVAÇÃO                |
+;;;;;;;| ;;;;;;;;;;;| DROPDOWNLIST       | ;;;;;;;;;;;;;;;    | ;;;;;;;;;;;;;;;;;;;;;;;;;;|
+-------------------------------------------------------------------------------------------
+
+RECEBIMENTO FATURA/CHEQUE/CARTÃO DEBITO/CARTÃO CREDITO
+VALOR          ;;;;;;;;;;;;;;;
+TIPO DOCUMENTO FATURA/CHEQUE/CARTÃO DEBITO/CARTÃO CREDITO
+CONDIÇÃO PGTO. ;;;;;;;;DROPDOWNLIST;;;;;;;;;;;;;;;;;;;;;;
+
+				   			       |BT. CONFIRMA| |BT. CANCELA|
+-------------------------------------------------------------------------------------------
+
+DESCONTO
+VALOR BRUTO   ;;;;;;;;;;;;;;;;;;;;;;
+DESCONTO ITEM ;;;;;;;;;;;;;;;;;;;;;;
+DESCONTO CAPA ;;;;;;;;;;;;;;;;;;;;;;
+VALOR LIQUIDO ;;;;;;;;;;;;;;;;;;;;;;
+	|BT. CONFIRMA| |BT. CANCELA|
+-------------------------------------------------------------------------------------------
+
+CADASTRO DE USUÁRIO
+|BT. NOVO| |BT. GRAVAR| |BT. PESQUISAR|
+CÓDIGO ;;;;;;           DATA CADASTRO ;;;;;;
+NOME   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LOGIN  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+SENHA  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CONFIRMAR SENHA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--------------------------------------------------------------------------------------------
